@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Exercícios</title>
+</head>
+<body>
+    Qual o valor da passagem?
+    <input type="text" id="txt_valor"><br>
+
+    Quantas passagens fará por mês?
+    <input type="text" id="txt_passagens"><br>
+
+    <button onclick="calcular()">Ver economia</button>
+</body>
+</html>
+
+<script>
+    function calcular() {
+        valor = txt_valor.value
+        passagens = txt_passagens.value
+        economia = (valor * passagens) / 2
+
+        alert(`Você economizará R$${economia} por mês`)
+    }
+</script>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 10. (ENTREGAR) Crie um programa que ajude uma pessoa a calcular o valor da sua conta de energia com base no consumo em kWh e nas taxas de energia 
+
+a) Solicite o consumo mensal em kWh 
+
+b) Solicite o valor em reais por kWh 
+
+c) Ao clicar em "Calcular Conta", calcule o valor da conta sendo o valor em reais por cada kWh consumido. 
+
+d) Caso o consumo seja superior a 300 kWh, aplique uma multa de 10% sobre o valor total 
+
+e) Exiba o valor final da conta e uma das seguintes mensagens:
+
+  "O valor da conta totalizou R$99"
+
+  "Gastos dentro do esperado" (se o consumo for até 300 kWh)
+
+  "Gastos excessivos, multa aplicada" (se o consumo for maior que 300 kWh até 500 kWh)
+
+  "Economize energia, sua conta está muito alta!" (se o consumo for maior que 500 kWh) -->
+    Consumo mensal em kWh:
+    <input type="text" id="txt_kwh"><br>
+
+    Valor em reais por kWh:
+    <input type="text" id="txt_valor"><br>
+
+    <button onclick="Calcular()">Calcular Conta</button><br>
+
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+    function Calcular() {
+        var kWh = Number(txt_kwh.value)
+        var valor = Number(txt_valor.value)
+        var total = kWh * valor 
+
+        if (kWh <= 300) {
+            div_mensagem.innerHTML = (`O valor da conta totalizou R$ ${total} <br>
+            Gastos dentro do esperado`)
+        } else {
+            total *= 1.1
+            if (kWh <= 500) {
+                div_mensagem.innerHTML = (`O valor da conta totalizou R$ ${total} <br> 
+                Gastos excessivos, multa aplicada`)
+            } else {
+                div_mensagem.innerHTML = (`O valor da conta totalizou R$ ${total} <br>
+                Economize energia, sua conta está muito alta!`)
+            }
+        } 
+    }
+</script>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 18. Crie um programa no qual:
+
+    a) O usuário informe quantas "Coca-Cola" ele acha que já bebeu na vida
+
+    b) Ao clicar em "Ver a quantidade", devem aparecer na tela N garrafinhas (ou latas, se preferir) de "Coca-Cola" uma
+    ao lado da outra, conforme a quantidade informada em a)
+
+    c) Para saber se seu programa está correto, teste algo assim: informe 20 e clique. Depois informe só 3 e clique
+    novamente. Veja se vão aparecer só 3 garrafinhas (ou latas) na tela. -->
+    Quantas Coca-Cola você acha que já bebeu na vida?
+    <input type="text" id="txt_coca"><br>
+
+    <button onclick="Ver()">Ver a quantidade</button><br>
+
+    <div id="div_mensagem"></div>
+</body>
+
+</html>
+<script>
+    function Ver() {
+        var coca = Number(txt_coca.value)
+        var mensagem = ''
+        var imagem = ``
+        for(var contador = 1; contador <= coca; contador++){
+            mensagem += `<img src="https://images.tcdn.com.br/img/img_prod/1082210/coca_cola_ks_290ml_cx_24_229_1_38b7d8d4577e56e5675f9175799b1b41.jpeg" style="width: 50px">`
+        }
+        div_mensagem.innerHTML = mensagem;
+    }
+</script>

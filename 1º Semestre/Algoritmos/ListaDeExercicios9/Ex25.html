@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 25. Refaça a questão anterior, de tal forma que:
+
+    a) Ao exibir os divisores do número informado, caso o número seja divisível somente por 1 e por ele mesmo, exiba
+    abaixo:
+
+    "O número X é um número primo," -->
+
+    Digite um número entre 0 e 100:
+    <input type="text" id="txt_numero" oninput="Validacao()">  
+    <span id="teste"></span>
+    <br>
+
+    <button onclick="Ver()">Ver Divisores</button><br>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+<script>
+    function Validacao() {
+        var num = Number(txt_numero.value)
+        if (num < 0 || num > 100) {
+            teste.innerHTML = 'Número inválido'
+        } else {
+            teste.innerHTML = ''
+        }
+    }
+    function Ver() {
+        var numero = Number(txt_numero.value)
+        var mensagem = ''
+        var mensagemPrimo = ''
+        var primo = 0
+        for(var contador = 1; contador <= numero; contador++){
+            primo = 0
+            if (numero % 1 > 0) {
+                primo++
+            }
+            if (numero % 2 > 0) {
+                primo++
+            }
+            if (numero % 3 > 0) {
+                primo++
+            }
+            if (numero % contador == 0) {
+                mensagem += `${contador}<br>`
+            }
+            if (primo >= 2) {
+                mensagem = `1 <br> ${numero} <br> O número ${numero} é um número primo`
+            }
+            
+        }
+        div_mensagem.innerHTML = mensagem;
+    }
+</script>

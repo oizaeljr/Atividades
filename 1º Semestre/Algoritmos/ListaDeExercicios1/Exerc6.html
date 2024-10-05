@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Exercícios</title>
+</head>
+<body>
+    <div id="div_calculadora">
+        Digite um número:
+        <input type="number" id="txt_n1"><br>
+
+        Digite outro número:
+        <input type="number" id="txt_n2"><br>
+
+        <button onclick="somar()">+</button>
+        <button onclick="subtrair()">-</button>
+        <button onclick="dividir()">/</button>
+        <button onclick="multiplicar()">X</button>
+    </div>
+    <div id="div_resultado"></div>
+</body>
+</html>
+
+<script>
+    function somar() {
+        n1 = Number(txt_n1.value)
+        n2 = Number(txt_n2.value)
+        resultado = n1 + n2
+
+        div_resultado.innerHTML = resultado;
+    }
+
+    function subtrair() {
+        n1 = Number(txt_n1.value)
+        n2 = Number(txt_n2.value)
+        resultado = n1 - n2
+
+        div_resultado.innerHTML = resultado;
+    }
+
+    function dividir() {
+        n1 = Number(txt_n1.value)
+        n2 = Number(txt_n2.value)
+        resultado = n1 / n2
+
+        div_resultado.innerHTML = resultado;
+    }
+
+    function multiplicar() {
+        n1 = Number(txt_n1.value)
+        n2 = Number(txt_n2.value)
+        resultado = n1 * n2
+
+        div_resultado.innerHTML = resultado;
+    }
+</script>

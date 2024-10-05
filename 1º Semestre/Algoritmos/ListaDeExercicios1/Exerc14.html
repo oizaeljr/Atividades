@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Exercícios</title>
+</head>
+<body>
+    Digite o ki base:
+    <input type="text" id="txt_ki"><br>
+
+    Transformar em... <br>
+    <button onclick="calcularSSJ()">SSJ</button>
+    <button onclick="calcularSSJ2()">SSJ2</button>
+    <button onclick="calcularSSJ3()">SSJ3</button><br>
+
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+    function calcularSSJ() {
+        var ki = Number(txt_ki.value)
+        var ssj = ki * 50
+        var mensagem = (`Após se transformar em SSJ, o ki desse Sayajin passa a ser de ${ssj}`)
+
+        div_mensagem.innerHTML = mensagem;
+    }
+
+    function calcularSSJ2() {
+        var ki = Number(txt_ki.value)
+        var ssj2 = ki * 100
+        var mensagem = (`Após se transformar em SSJ2, o ki desse Sayajin passa a ser de ${ssj2}`)
+
+        div_mensagem.innerHTML = mensagem;
+    }
+
+    function calcularSSJ3() {
+        var ki = Number(txt_ki.value)
+        var ssj3 = ki * 200
+        var mensagem = (`Após se transformar em SSJ3, o ki desse Sayajin passa a ser de ${ssj3}`)
+
+        div_mensagem.innerHTML = mensagem;
+    }
+</script>

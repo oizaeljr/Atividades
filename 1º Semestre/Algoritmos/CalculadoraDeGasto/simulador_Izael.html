@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Gastos</title>
+</head>
+<body>
+    <h1>PRODUÇÃO DE SOJA</h1>
+
+    Quantos hectares possui sua produção?
+    <input type="number" id="txt_hectare"><br><br>
+
+    Qual o custo da sua produção por hectare (em R$)?
+    <input type="number" id="txt_custo"><br><br>
+
+    Digite a sigla do seu Estado: 
+    <input type="text" id="txt_estado"><br><br>
+
+    Como está a temperatura do ambiente da sua produção?<br> (muito frio, frio, moderado, quente, muito quente)
+    <input type="text" id="txt_temperatura"><br><br>
+
+    Como está o tempo em relação ao volume da chuva?<br> (pouca chuva, moderada, muita chuva)
+    <input type="text" id="txt_chuva"><br><br>    
+
+    <button onclick="Calcular()">Calcular Riscos</button><br><br>
+    
+    <div id="div_mensagem"></div>
+
+    <div id="div_mensagem1"></div><br>
+
+    <div id="div_mensagem2"></div>
+</body>
+</html>
+
+<script>
+    
+    function Calcular() {
+        var hectare = Number(txt_hectare.value)
+        var custo = Number(txt_custo.value)
+        var estado = txt_estado.value
+        var temperatura = txt_temperatura.value
+        var chuva = txt_chuva.value
+        var custototal = custo * hectare
+        var perdaMinima = custototal * 0.1
+        var perdaMaxima = custototal * 0.9
+        var risco = 0
+        var probabilidade = 20
+        var nomeEstado = ''
+        
+
+        if (estado == 'PR') {
+            risco = risco + 5
+            probabilidade = probabilidade + 20
+            nomeEstado = 'Paraná'
+
+        } 
+        if (estado == 'SC') {
+            risco = risco + 5
+            probabilidade = probabilidade + 20
+            nomeEstado = 'Santa Catarina'
+            
+        } 
+        if (estado == 'RS') {
+            risco = risco + 5
+            probabilidade = probabilidade + 20
+            nomeEstado = 'Rio Grande do Sul'
+            
+        } 
+        if (estado == 'MT') {
+            risco = risco + 5
+            probabilidade = probabilidade + 20
+            nomeEstado = 'Mato Grosso'
+
+        } 
+        if (estado == 'MS') {
+            risco = risco + 5
+            probabilidade = probabilidade + 20
+            nomeEstado = 'Mato Grosso do Sul'
+
+        } 
+        if (estado == 'GO') {
+            risco = risco + 5
+            probabilidade = probabilidade + 20
+            nomeEstado = 'Goiás'
+
+        } 
+        if (estado == 'DF') {
+            risco = risco + 5
+            probabilidade = probabilidade + 20
+            nomeEstado = 'Distrito Federal'
+
+        } 
+        if (estado == 'SP') {
+            risco = risco + 5
+            probabilidade = probabilidade + 20
+            nomeEstado = 'São Paulo'
+
+        } 
+        if (estado == 'MG') {
+            risco = risco + 3
+            probabilidade = probabilidade + 15
+            nomeEstado = 'Minas Gerais'
+            
+        } 
+        if (estado == 'ES') {
+            risco = risco + 3
+            probabilidade = probabilidade + 15
+            nomeEstado = 'Espirito Santo'
+            
+        } 
+        if (estado == 'RJ') {
+            risco = risco + 3
+            probabilidade = probabilidade + 15
+            nomeEstado = 'Rio de Janeiro'
+            
+        } 
+        if (estado == 'RO') {
+            risco = risco + 3
+            probabilidade = probabilidade + 15
+            nomeEstado = 'Rondônia'
+            
+        } 
+        if (estado == 'TO') {
+            risco = risco + 3
+            probabilidade = probabilidade + 15
+            nomeEstado = 'Tocantins'
+            
+        } 
+        if (estado == 'AC') {
+            risco = risco + 3
+            probabilidade = probabilidade + 15
+            nomeEstado = 'Acre'
+            
+        } 
+        if (estado == 'AP') {
+            risco = risco + 3
+            probabilidade = probabilidade + 15
+            nomeEstado = 'Amapá'
+            
+        } 
+        if (estado == 'AM') {
+            risco = risco + 3
+            probabilidade = probabilidade + 15
+            nomeEstado = 'Amazonas'
+            
+        } 
+        if (estado == 'PA') {
+            risco = risco + 3
+            probabilidade = probabilidade + 15
+            nomeEstado = 'Pará'
+            
+        } 
+        if (estado == 'RR') {
+            risco = risco + 3
+            probabilidade = probabilidade + 15
+            nomeEstado = 'Roraima'
+            
+        } 
+        if (estado == 'BA') {
+            risco = risco + 3
+            probabilidade = probabilidade + 15
+            nomeEstado = 'Bahia'
+            
+        } 
+        if (estado == 'MA') {
+            risco = risco + 3
+            probabilidade = probabilidade + 15
+            nomeEstado = 'Maranhão'
+            
+        } 
+        if (estado == 'PI') {
+            risco = risco + 3
+            probabilidade = probabilidade + 15
+            nomeEstado = 'Piauí'
+            
+        } 
+        if (estado == 'AL') {
+            risco = risco + 3
+            probabilidade = probabilidade + 15
+            nomeEstado = 'Alagoas'
+            
+        } 
+        if (estado == 'CE') {
+            risco = risco + 3
+            probabilidade = probabilidade + 15
+            nomeEstado = 'Ceará'
+            
+        } 
+        if (estado == 'PB') {
+            risco = risco + 3
+            probabilidade = probabilidade + 15
+            nomeEstado = 'Paraíba'
+            
+        } 
+        if (estado == 'PE') {
+            risco = risco + 3
+            probabilidade = probabilidade + 15
+            nomeEstado = 'Pernambuco'
+            
+        } 
+        if (estado == 'RN') {
+            risco = risco + 3
+            probabilidade = probabilidade + 15
+            nomeEstado = 'Rio Grande do Norte'
+            
+        } 
+        if (estado == 'SE') {
+            risco = risco + 3
+            probabilidade = probabilidade + 15
+            nomeEstado = 'Sergipe'
+            
+        } 
+
+
+        if (temperatura == 'muito frio') {
+            risco = risco + 1
+            probabilidade = probabilidade + 20
+
+        }  
+        if (temperatura == 'frio') {
+            risco = risco + 1
+            probabilidade = probabilidade + 15
+
+        }  
+        if (temperatura == 'moderado') {
+            risco = risco + 2
+            probabilidade = probabilidade + 10
+
+        }  
+        if (temperatura == 'quente') {
+            risco = risco + 2
+            probabilidade = probabilidade + 15
+
+        }  
+        if (temperatura == 'muito quente') {
+            risco = risco + 3
+            probabilidade = probabilidade + 20
+
+        }  
+
+
+        if (chuva == 'pouca chuva') {
+            risco = risco + 2
+            probabilidade = probabilidade + 20
+
+        } 
+        if (chuva == 'moderado') {
+            risco = risco + 1
+            probabilidade = probabilidade + 15
+
+        } 
+        if (chuva == 'muita chuva') {
+            risco = risco + 2
+            probabilidade = probabilidade + 20
+
+        } 
+
+
+        if (risco >= 6) {
+            div_mensagem1.innerHTML = (`Estado: ${nomeEstado} <br><br>
+            A probabilidade da sua produção de soja ter contato com a ferrugem asiática é alta! <br><br>
+            Há um risco de ${probabilidade}% de contaminação!`)
+
+            div_mensagem2.innerHTML = (`Caso o fungo Ferrugem Asiática entre em contato com a sua produção, <br>
+            a perda mínima é de R$${perdaMinima},00 equivalente a 10% da área total, podendo chegar <br>
+            até 90% da produção, que geraria um prejuízo de R$${perdaMaxima},00`);
+        } else {
+            div_mensagem1.innerHTML = (`Estado: ${nomeEstado} <br><br>
+            A probabilidade da sua produção de soja ter contato com a ferrugem asiática é média. <br><br>
+            Há um risco de ${probabilidade}% de contaminação!`)
+
+            div_mensagem2.innerHTML = (`Caso o fungo Ferrugem Asiática entre em contato com a sua produção, <br>
+            a perda mínima é de R$${perdaMinima},00 equivalente a 10% da área total, podendo chegar <br>
+            até 90% da produção, que geraria um prejuízo de R$${perdaMaxima},00`);
+        }
+
+    }
+</script>
+
+
+
+
+
+
+

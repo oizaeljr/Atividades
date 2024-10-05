@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Exercícios</title>
+</head>
+<body>
+    Digite a quantidade de KWh consumida por mês:
+    <input type="text" id="txt_consumo"><br>
+
+    <button onclick="Calcular()">Calcular conta de luz</button><br>
+
+</body>
+</html>
+
+<script>
+    function Calcular() {
+        var consumo = Number(txt_consumo.value)
+        var valor = consumo * 0.85
+
+        if (consumo >= 100) {
+            alert(`Valor a ser pago: R$${valor},00`)
+        }
+        
+        if (consumo < 100) {
+            valor = valor * 0.9
+            alert(`Valor a ser pago: R$${valor},00`)
+        }
+    }
+</script>

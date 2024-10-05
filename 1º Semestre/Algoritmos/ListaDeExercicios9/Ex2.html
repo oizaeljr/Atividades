@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 2. Crie um programa o qual:   
+
+a) Tenha um botão "Diga algo sobre a matéria de Algoritmos";  
+
+b) Ao clicar nele, mostre na própria página 7 vezes uma frase a sua escolha, uma abaixo da outra.   -->
+<button onclick="Verificar()">Diga algo sobre a matéria de Algorimos</button><br>
+<div id="div_mensagem"></div>
+</body>
+</html>
+<script>
+    function Verificar() {
+        var mensagem = '';
+        for (var contador = 1; contador <= 7; contador++) {
+            mensagem += `Boa tarde <br>`;
+        }
+        div_mensagem.innerHTML = mensagem;
+    }
+</script>

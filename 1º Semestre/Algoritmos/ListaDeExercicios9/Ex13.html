@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 13. Crie um programa o qual:   
+
+a) Pergunte de quantos em quantos dias o usuário faz musculação (é só uma informação, só 1 número, ok?)   
+
+b) Ao clicar em "Exibir rotina mensal", mostre uma sequência de 30 frases, como neste exemplo:   
+
+         Dia 1 - Musculação   
+
+         Dia 2 - Comer, dormir etc   
+
+         Dia 3 - Comer, dormir etc   
+
+         Dia 4 - Musculação   
+
+         Dia 5 - Comer, dormir etc   
+
+         Dia 6 - Comer, dormir etc   
+
+         Dia 7 - Musculação   
+
+         ...   
+
+         Dia 30 - Comer, dormir etc   
+
+O Dia 1 sempre é de "Musculação"   
+
+Considere que, nesse exemplo, o usuário informou 3 no item a)    
+De quantos em quantos dias você faz musculação?-->
+<input type="text" id="txt_dias"><br>
+
+<button onclick="Exibir()">Exibir rotina mensal</button><br>
+<div id="div_mensagem"></div>
+
+</body>
+</html>
+<script>
+    function Exibir() {
+        var dias = Number(txt_dias.value)
+        var mensagem = ''
+        var dia1 = 'Musculação'
+        var outrosdias = 'Comer, dormir etc'
+
+        
+        for(var contador = 1; contador <= 30; contador++){
+            if (contador % dias == 1) {
+                mensagem += `Dia ${contador} - ${dia1} <br>`    
+            } else {
+                mensagem += `Dia ${contador} - ${outrosdias} <br>`
+            }
+            
+        }
+        div_mensagem.innerHTML = mensagem;
+        
+    }
+</script>

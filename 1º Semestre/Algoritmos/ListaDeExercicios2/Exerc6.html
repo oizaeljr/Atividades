@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Exercícios</title>
+</head>
+<body>
+    Digite o valor da renda familiar:
+    <input type="text" id="txt_renda"><br>
+
+    Digite o valor da prestação:
+    <input type="text" id="txt_prestacao"><br>
+
+    <button onclick="Verificar()">Verificar financiamento</button><br>
+
+    <div id="div_mensagem"></div><br>
+    <b><div style="color: red;" id="div_mensagem2"></div></b>
+</body>
+</html>
+
+<script>
+    function Verificar() {
+        var renda = Number(txt_renda.value)
+        var prestacao = Number(txt_prestacao.value)
+        var analise = (prestacao / renda) * 100
+        var mensagem = (`A prestação corresponde a ${analise}% da renda familiar`)
+
+        div_mensagem.innerHTML = mensagem;
+
+        if (analise > 30) {
+            div_mensagem2.innerHTML = (`Será necessário complementar a renda familiar`);
+        }
+    }
+</script>

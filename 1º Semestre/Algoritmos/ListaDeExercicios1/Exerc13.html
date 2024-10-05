@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de exercícios</title>
+</head>
+<body>
+    Digite o valor da passagem:
+    <input type="text" id="txt_valor"><br>
+
+    Digite a quantidade viagens:
+    <input type="text" id="txt_quantidade"><br>
+
+    Digite a distância do trabalho até sua casa (em km):
+    <input type="text" id="txt_distancia"><br>
+
+    <button onclick="Calcular()">Calcular VT</button><br>
+
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+    function Calcular() {
+        var passagem = Number(txt_valor.value)
+        var quantidade = Number(txt_quantidade.value)
+        var distancia = Number(txt_distancia.value)
+        var quant_app = quantidade * 0.1
+        var quant_onibus = quantidade * 0.9
+        var custo_app = (distancia * 0.75) * quant_app
+        var custo_onibus = passagem * quant_onibus
+        var custo_total = custo_app + custo_onibus
+        var mensagem = (`Você vai gastar R$${custo_total} por mês com transporte`)
+
+        div_mensagem.innerHTML = mensagem;
+    }
+</script>

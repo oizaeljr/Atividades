@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 2. O Tinder é uma plataforma de encontros, utilizada para dar “match” com pessoas que possuem interesses em comum, sejam eles aparência, gostos ou costumes.  
+
+Robervaldo tem 1.85m de altura, mas, só se relaciona com pessoas menores que ele.  
+
+Além disso, ele gosta de pessoas de cabelo castanho ou loiro. 
+
+Com base nas informações, crie um simulador de Tinder no qual: 
+
+a) Solicite a altura da pessoa encontrada 
+
+b) Solicite a cor do cabelo da pessoa encontrada, dentre as opções: 
+
+   Preto 
+   Vermelho 
+   Amarelo 
+   Castanho 
+
+c) Ao clicar em "Deu match?", mostre, abaixo: 
+     - A imagem de um cara feliz/empolgado, caso as características sejam Robervaldo goste;
+     - Ou a imagem de um cara decepcionado em caso contrário  -->
+
+     Altura:
+     <input type="text" id="txt_altura"><br>
+
+     Cor do cabelo (preto, vermelho, loiro, castanho):
+     <select id="sel_opcoes">
+        <option value="valor0">Selecione a cor do cabelo</option>
+        <option value="valor1">preto</option>
+        <option value="valor2">vermelho</option>
+        <option value="valor3">loiro</option>
+        <option value="valor4">castanho</option>
+     </select>
+
+     <button onclick="Avaliar()">Deu match?</button><br>
+    
+     <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+    function Avaliar() {
+        var altura = Number(txt_altura.value)
+        var cabelo = sel_opcoes.value
+
+        if (altura < 1.85 && (cabelo == 'valor3' || cabelo == 'valor4')) {
+            div_mensagem.innerHTML = (`<img src="https://img.freepik.com/vetores-premium/ilustracao-emoji-de-rosto-feliz_6735-1057.jpg" style="width: 40px;">`)
+        } else if (altura >= 1.85 || (cabelo == 'valor1' || cabelo == 'valor2')){
+            div_mensagem.innerHTML = (`<img src="https://img.freepik.com/vetores-premium/carrancudo-rosto-triste-tamanho-grande-do-sorriso-emoji-amarelo_599062-5954.jpg" style="width: 40px;">`)
+        }
+    }
+</script>

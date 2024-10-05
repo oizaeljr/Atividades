@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio</title>
+</head>
+<body>
+    <!-- exiba "Os elementos colidem" caso haja colisão ou "Elementos não colidem" em caso de não colisão.
+
+    Tome como verdade (e apenas teste assim) que: A vértice "x0" sempre será MENOR que a vértice 
+    "x1" e a vértice "y0" sempre será MENOR que a vértice "y1". -->
+    
+    Digite as vertices do primeiro retângulo: 
+    x0: <input type="number" id="txt_x01"> 
+    y0: <input type="number" id="txt_y01">
+    x1: <input type="number" id="txt_x11">
+    y1: <input type="number" id="txt_y11"><br><br>
+
+    Digite as vertices do primeiro retângulo: 
+    x0: <input type="number" id="txt_x02"> 
+    y0: <input type="number" id="txt_y02">
+    x1: <input type="number" id="txt_x12">
+    y1: <input type="number" id="txt_y12"><br>
+
+    <button onclick="Verificar()">Verificar colisão</button><br>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+    function Verificar() {
+        var x11 = Number(txt_x11.value)
+        var y11 = Number(txt_y11.value)
+        var x02 = Number(txt_x02.value)
+        var y02 = Number(txt_y02.value)
+        var x01 = Number(txt_x01.value)
+        var x12 = Number(txt_x12.value)
+        var y01 = Number(txt_y01.value)
+        var y12 = Number(txt_y12.value)
+
+        // VERSÃO SEM USAR OS OPERADORES LÓGICOS
+        // if (x11 >= x02) {
+        //     if (y11 >= y02) {
+        //         if (x01 <= x12) {
+        //             if (y01 <= y12) {
+        //                 div_mensagem.innerHTML = (`Os elementos colidem`)
+        //             } else {
+        //                 div_mensagem.innerHTML = (`Elementos não colidem`)
+        //             }
+                    
+        //         } else {
+        //             div_mensagem.innerHTML = (`Elementos não colidem`)
+        //         }
+        //     } else {
+        //         div_mensagem.innerHTML = (`Elementos não colidem`)
+        //     }
+        // } else {
+        //     div_mensagem.innerHTML = (`Elementos não colidem`)
+        // }
+
+        // VERSÃO COM OS OPERADORES LÓGICOS
+        if (x11 >= x02 && y11 >= y02 && x01 <= x12 && y01 <= y12) {
+            div_mensagem.innerHTML = (`Os elementos colidem`)
+        }else {
+                div_mensagem.innerHTML = (`Elementos não colidem`)
+            }
+    } 
+        
+</script>
+

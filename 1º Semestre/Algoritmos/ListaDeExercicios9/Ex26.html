@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 26. Crie um programa o qual:
+
+    a) Solicite um número, que deve estar entre 10 e 500, exibindo alerta de erro caso não atenda os critérios;
+
+    b) Ao clicar no botão "Somar Pares", deve exibir todos os números pares entre 0 e o número inserido pelo usuário;
+
+    c) Ao final da listagem, deve exibir a frase "Soma dos pares: X", sendo X a soma de todos os números exibidos; -->
+    Digite um número entre 10 e 500:
+    <input type="text" id="txt_numero" oninput="Validacao()">  
+    <span id="teste"></span>
+    <br>
+    <button onclick="Somar()">Somar Pares</button><br>
+    <div id="div_mensagem"></div>
+</body>
+
+</html>
+<script>
+    function Validacao() {
+        var num = Number(txt_numero.value)
+        if (num < 10 || num > 500) {
+            teste.innerHTML = 'Número inválido'
+        } else {
+            teste.innerHTML = ''
+        }
+    }
+    function Somar() {
+        var numero = Number(txt_numero.value)
+        var mensagem = ''
+        var total = 0
+        for(var contador = 10; contador <= numero; contador++){
+            if (contador % 2 == 0) {
+                mensagem += `${contador}<br>`  
+                total += contador 
+            }
+        }
+        mensagem += `Soma dos pares: ${total}`
+        div_mensagem.innerHTML = mensagem;
+    }
+</script>

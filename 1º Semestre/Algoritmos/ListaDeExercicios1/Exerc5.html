@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Exercícios</title>
+</head>
+<body>
+    Digite a nota da avaliação continuada:
+    <input type="text" id="txt_continuada"><br>
+
+    Digite a nota da avaliação semestral:
+    <input type="text" id="txt_semestral"><br>
+
+    Digite o nome do aluno:
+    <input type="text" id="txt_nome"><br>
+
+    <button onclick="calcular()">Calcular média</button>
+</body>
+</html>
+
+<script>
+    function calcular() {
+        continuada = (txt_continuada.value * 0.4)
+        semestral = (txt_semestral.value * 0.6)
+        nome = txt_nome.value
+        media = continuada + semestral
+
+        alert(`A média de ${nome} será de ${media}`)
+    }
+</script>

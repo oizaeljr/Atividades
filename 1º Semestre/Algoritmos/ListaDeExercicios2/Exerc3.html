@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de exercícios</title>
+</head>
+<body>
+    Digite a primeira nota:
+    <input type="text" id="txt_n1"><br>
+
+    Digite a segunda nota:
+    <input type="text" id="txt_n2"><br>
+
+    Digite a terceira nota:
+    <input type="text" id="txt_n3"><br>
+
+    <button onclick="Calcular()">Analisar desempenho</button><br>
+
+    <div id="div_mensagem"></div>
+
+</body>
+</html>
+
+<script>
+    function Calcular() {
+        var n1 = Number(txt_n1.value)
+        var n2 = Number(txt_n2.value)
+        var n3 = Number(txt_n3.value)
+        var media = (n1 + n2 + n3) / 3
+        var mensagem = (`Sua média foi de ${media}`)
+        div_mensagem.innerHTML = mensagem;
+        if (media > 9.4) {
+            div_mensagem.innerHTML = (`${mensagem} <br> Parabéns, você é fora de série!`)
+        }
+
+    }
+</script>

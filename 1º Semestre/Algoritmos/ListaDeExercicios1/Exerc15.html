@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Exercícios</title>
+</head>
+<body>
+    Digite o peso:
+    <input type="text" id="txt_peso"><br>
+
+    Digite a altura:
+    <input type="text" id="txt_altura"><br>
+
+    <button onclick="Calcular()">Calcular IMC</button><br>
+
+    <div id="div_mensagem"></div>
+
+</body>
+</html>
+
+<script>
+    function Calcular() {
+        var peso = Number(txt_peso.value)
+        var altura = Number(txt_altura.value)
+        var imc = peso / (altura * altura)
+        
+        div_mensagem.innerHTML = imc;
+    }
+</script>

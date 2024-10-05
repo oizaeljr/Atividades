@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 7. Uma nutricionista precisa ajudar seus pacientes em com suas dietas. Ajude-a criando um programa o qual: 
+
+a) Pergunte quantos pães franceses o usuário tem comido por dia; 
+
+b) Pergunte quantos pacotes de bolacha recheada o usuário tem comido por dia; 
+
+c) Pergunte quantos copos de achocolatado o usuário tem tomado por dia; 
+
+d) Ao clicar em "Verificar calorias", calcule quantas calorias o usuário tem consumido 
+com base nas 3 informações. Considere que um pão francês tem 50 calorias, um pacote de bolacha, 
+80 e um copo de achocolatado, 70. 
+
+e) Após fazer o cálculo, exiba uma dessas frases, abaixo do botão: 
+
+   "Parabéns, vai ficar em forma!", caso as calorias sejam menores do que 200. 
+
+   "Cuidado, vai ficar menos saudável !" caso as calorias sejam entre 200 e 400. 
+
+   "Alerta crítico de saúde !!!", caso as calorias sejam mais de 400.  -->
+Quantos pães franceses o usuário tem comido por dia:
+<input type="text" id="txt_paes"><br>
+
+Quantos pacotes de bolacha recheada o usuário tem comido por dia; 
+<input type="text" id="txt_bolacha"><br>
+
+Quantos copos de achocolatado o usuário tem tomado por dia:
+<input type="text" id="txt_achocolatado"><br>
+
+<button onclick="Verificar()">Verificar Calorias</button><br>
+
+<div id="div_mensagem"></div>
+
+</body>
+</html>
+
+<script>
+    function Verificar() {
+        var paes = Number(txt_paes.value)
+        var bolacha = Number(txt_bolacha.value)
+        var achocolatado = Number(txt_achocolatado.value)
+        var calorias = (paes * 50) + (bolacha * 80) + (achocolatado * 70)
+
+        if (calorias < 200) {
+            div_mensagem.innerHTML = (`Parabéns, vai ficar em forma!`)
+        } else {
+            if (calorias <= 400) {
+                div_mensagem.innerHTML = (`Cuidado, vai ficar menos saudável !`)
+            } else {
+                div_mensagem.innerHTML = (`Alerta crítico de saúde !!!  `)
+            }
+        }
+    }
+</script>

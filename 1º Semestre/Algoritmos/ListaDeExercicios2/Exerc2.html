@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Exercícios</title>
+</head>
+<body>
+    Digite a quantidade de latas de refrigerantes consumidas por dia:
+    <input type="text" id="txt_consumo"><br>
+
+    <button onclick="Calcular()">Quantos refris?</button><br>
+
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+    function Calcular() {
+        var consumo = Number(txt_consumo.value)
+        var consumo_anual = consumo * 365
+        var mensagem = (`Quantidade de consumo anual: ${consumo_anual}`)
+
+        div_mensagem.innerHTML = mensagem;
+        if (consumo_anual >= 500) {
+            div_mensagem.innerHTML = (`${mensagem} <br> Cuidado com a diabetes!`)
+        }
+    }
+</script>

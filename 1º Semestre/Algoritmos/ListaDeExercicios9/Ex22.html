@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 22. Refaça o programa anterior de tal forma de que, somente nos meses que ganhou o "bônus", apareça uma imagem de
+    uma estrela bem pequena (reduza a imagem para ficar quase do tamanho da fonte) à direita do valor acumulado. -->
+    Depósitos feitos no banco:
+    <input type="text" id="txt_depositos"><br>
+    
+    Valor de cada depósito:
+    <input type="text" id="txt_valor"><br>
+    
+    <button onclick="Acompanhar()">Acompanhar grana</button><br>
+    
+    <div id="div_mensagem"></div>
+    </body>
+    </html>
+    <script>
+        function Acompanhar() {
+            var depositos = Number(txt_depositos.value)
+            var valor = Number(txt_valor.value)
+            var mensagem = ''
+            var valorInicial = 0
+            var valorBonus = 0
+    
+            for(var contador = 1; contador <= depositos; contador++){
+                if (contador % 3 > 0) {
+                    if (valorBonus > 1) {
+                        valorBonus += valor
+                        mensagem += `${contador}º Mês: R$ ${valorBonus} <br>`
+                    } else {
+                        valorInicial = contador * valor
+                        mensagem += `${contador}º Mês: R$ ${valorInicial} <br>`
+                    }
+                    
+                } else if (contador == 3) { 
+                        valorBonus = (contador * valor) * 1.01
+                        mensagem += `${contador}º Mês: R$ ${valorBonus} <img src="https://static4.depositphotos.com/1026550/376/i/950/depositphotos_3763236-stock-photo-gold-star.jpg" style="width: 15px;"> <br>`    
+                    } else {
+                        valorBonus = (valorBonus + valor) * 1.01
+                        mensagem += `${contador}º Mês: R$ ${valorBonus} <img src="https://static4.depositphotos.com/1026550/376/i/950/depositphotos_3763236-stock-photo-gold-star.jpg" style="width: 15px;"> <br>`
+                    }
+                    
+                if (contador == depositos) {
+                    mensagem += `Total guardado: R$${valorBonus}`
+                }
+            }
+            div_mensagem.innerHTML = mensagem;
+        }
+    </script>

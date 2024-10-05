@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Exercícios</title>
+</head>
+<body>
+    Digite o nome do guerreiro:
+    <input type="text" id="txt_guerreiro"><br>
+
+    Digite o ki normal do guerreiro:
+    <input type="text" id="txt_ki"><br>
+
+    <button onclick="calcular()">Ver ki em cada forma</button>
+</body>
+</html>
+
+<script>
+    function calcular() {
+        guerreiro = txt_guerreiro.value
+        ki = txt_ki.value
+        super1 = ki * 50
+        super2 = ki * 100
+
+        alert(`Modo Super Sayajin \nNome do guerreiro: ${guerreiro} \nKi: ${super1}`)
+        alert(`Modo Super Sayajin 2 \nNome do guerreiro: ${guerreiro} \nKi: ${super2}`)
+    }
+</script>

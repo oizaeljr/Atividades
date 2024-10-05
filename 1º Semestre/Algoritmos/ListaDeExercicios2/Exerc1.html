@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Exercícios</title>
+</head>
+<body>
+    Digite sua idade:
+    <input type="text" id="txt_idade"><br>
+
+    <button onclick="Verificar()">Ir pra festa</button>
+</body>
+</html>
+
+<script>
+    function Verificar() {
+        var idade = Number(txt_idade.value)
+
+        if (idade < 18) {
+            alert(`Pedir permissão pro responsável`)
+            alert(`#partiuFesta`)
+        }
+        if (idade >= 18) {
+            alert(`#partiuFesta`)
+        }
+    }
+</script>

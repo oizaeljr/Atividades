@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Exercícios</title>
+</head>
+<body>
+    Digite a quantidade de votos do candidato A:
+    <input type="text" id="txt_candA"><br>
+
+    Digite a quantidade de votos do candidato B:
+    <input type="text" id="txt_candB"><br>
+
+    Digite a quantidade de votos brancos:
+    <input type="text" id="txt_brancos"><br>
+
+    Digite a quantidade de votos nulos:
+    <input type="text" id="txt_nulos"><br>
+
+    <button onclick="Calcular()">Resultado da Eleição</button><br>
+
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+    function Calcular() {
+        var candA = Number(txt_candA.value)
+        var candB = Number(txt_candB.value)
+        var brancos = Number(txt_brancos.value)
+        var nulos = Number(txt_nulos.value)
+        var totalvotos = candA + candB + brancos + nulos
+        var invalidos = brancos + nulos
+        var porc_candA = (candA / totalvotos) * 100
+        var porc_candB = (candB / totalvotos) * 100
+        var porc_invalidos = (invalidos / totalvotos) * 100
+
+        div_mensagem.innerHTML = (`Total de votos: ${totalvotos} <br>
+        Candidato A: ${porc_candA}% (${candA} votos) <br>
+        Candidato B: ${porc_candB}% (${candB} votos) <br>
+        Inválidos: ${porc_invalidos}% (${invalidos} votos)`)
+    }
+</script>

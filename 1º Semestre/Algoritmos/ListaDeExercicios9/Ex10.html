@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 10. Crie um programa o qual:   
+
+a) Solicite um intervalo crescente de valores numéricos    
+
+b) Ao clicar num botão "S2 Pares"...   
+
+c) Exiba, debaixo do botão, todos os números pares contidos no intervalo.   -->
+Número inicial:
+<input type="text" id="txt_inicial"><br>
+Número Final:
+<input type="text" id="txt_final"><br>
+
+<button onclick="par()">S2 Pares</button><br>
+<div id="div_mensagem"></div>
+</body>
+</html>
+<script>
+    function par() {
+        var inicial = Number(txt_inicial.value)
+        var final = Number(txt_final.value)
+        var mensagem = ''
+
+        for(var contador = inicial; contador <= final; contador++){
+            if (contador % 2 == 0) {
+                mensagem += `${contador} <br>`
+            }
+        }
+        div_mensagem.innerHTML = mensagem;
+    }
+</script>

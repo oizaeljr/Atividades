@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 4. Um novo banco eletrônico, o Banco Melete possui um sistema diferenciado de autenticação no qual pede um login, uma senha e uma 3ª informação pessoal, que pode ser o ano de nascimento ou o nome do animal de estimação do cliente. Crie um protótipo que simule a autenticação de um determinado cliente, o qual: 
+
+a) Solicite o login, a senha e a informação pessoal ao usuário 
+
+b) Ao clicar num botão "Autenticar", exiba uma dessas frases abaixo do botão: 
+
+     b.1.) "Usuário autenticado", caso o login seja "ana", a senha "braga" e a informação pessoal for ou "1949" ou "louro josé" 
+
+     b.2.) "Falha na autenticação", caso as regras de verificação em b.1) falhem  -->
+
+     Login:
+     <input type="text" id="txt_login"><br>
+
+     Senha:
+     <input type="text" id="txt_senha"><br>
+
+     Informação:
+     <input type="text" id="txt_info"><br>
+
+     <button onclick="Autenticar()">Autenticar</button><br>
+
+     <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+    function Autenticar() {
+        var login = txt_login.value
+        var senha = txt_senha.value
+        var info = txt_info.value
+
+        if ((login == 'ana' && senha == 'braga') && (info == '1949' || info == 'louro josé')) {
+            div_mensagem.innerHTML = (`Usuário autenticado`)
+        } else {
+            div_mensagem.innerHTML = (`Falha na autenticação`)
+        }
+    }
+</script>

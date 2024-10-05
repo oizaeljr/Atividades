@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 21. Refaça o programa anterior de tal forma que, a cada 3 depósitos o banco dê um bônus de 1% sobre o valor
+    acumulado após o depósito. Ex:
+
+    1º Mês: R$ 500.00
+
+    2º Mês: R$ 1000.00
+
+    3º Mês: R$ 1515.00
+
+    4º Mês: R$ 2015.00
+
+    5º Mês: R$ 2515.00
+
+    6º Mês: R$ 3045.15
+
+    Total guardado: R$3045.15
+
+    Note que nos meses 3 e 6, o valor aumentou em 1% do total após o depósito. -->
+Depósitos feitos no banco:
+<input type="text" id="txt_depositos"><br>
+
+Valor de cada depósito:
+<input type="text" id="txt_valor"><br>
+
+<button onclick="Acompanhar()">Acompanhar grana</button><br>
+
+<div id="div_mensagem"></div>
+</body>
+</html>
+<script>
+    function Acompanhar() {
+        var depositos = Number(txt_depositos.value)
+        var valor = Number(txt_valor.value)
+        var mensagem = ''
+        var valorInicial = 0
+        var valorBonus = 0
+
+        for(var contador = 1; contador <= depositos; contador++){
+            if (contador == 1 || contador == 2) {
+                valorInicial = contador * valor
+                mensagem += `${contador}º Mês: R$ ${valorInicial} <br>`
+            } else if (contador % 3 == 0) {
+                if (contador == 3) {
+                    valorBonus = (contador * valor) * 1.01
+                    mensagem += `${contador}º Mês: R$ ${valorBonus} <br>`    
+                } else {
+                    valorBonus = (valorBonus + valor) * 1.01
+                    mensagem += `${contador}º Mês: R$ ${valorBonus} <br>`
+                }
+            } else {
+                valorBonus += valor
+                mensagem += `${contador}º Mês: R$ ${valorBonus} <br>`
+            }
+            
+            if (contador == depositos) {
+                mensagem += `Total guardado: R$${valorBonus}`
+            }
+        }
+        div_mensagem.innerHTML = mensagem;
+    }
+</script>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Exercícios</title>
+</head>
+<body>
+    Digite o valor a ser depositado/retirado: 
+    <input type="number" id="txt_valor"><br>
+
+    <button onclick="depositar()">Depositar</button>
+    <button onclick="retirar()">Retirar</button>
+</body>
+</html>
+
+<script>
+    var saldo = 0;
+    
+    function depositar() {      
+        var valor = Number(txt_valor.value)
+        saldo = saldo + valor
+
+        alert(`Depósito de R$${valor} efetuado! Saldo atual: R$${saldo}`)
+    }
+
+    function retirar() {
+        var valor = Number(txt_valor.value)
+        saldo = saldo - valor
+
+        alert(`Retirada de R$${valor} efetuada! Saldo atual: R$${saldo}`)
+    }
+</script>
