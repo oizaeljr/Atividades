@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 10. Crie um programa que simule um jogo de dados, o qual:  
+
+a) Tenha um botão "Dado Jogador 1" que faz aparecer, abaixo dele, o valor de um dadinho de 6 lados sorteado  
+
+b) Tenha um botão "Dado Jogador 2" que faz aparecer, abaixo dele, o valor de um dadinho de 6 lados sorteado  
+
+c) Tenha um botão "Comparar Resultados", que exibe uma das frases abaixo de tudo:  
+
+  "Jogador [1 ou 2] venceu", caso um deles tenha vencido  
+
+  "Empate!", em caso dos dados serem iguais  -->
+
+  <button onclick="jogar()">Dado Jogador 1</button><br>
+  <div id="div_mensagem"></div><br>
+
+  <button onclick="jogar2()">Dado Jogador 2</button><br>
+  <div id="div_mensagem2"></div><br>
+
+  <button onclick="comparar()">Comparar Resultados</button><br>
+  <div id="div_mensagem3"></div>
+</body>
+</html>
+<script>
+    var aleatorio = Math.random() * 6 + 1
+    var aleatorio2 = Math.random() * 6 + 1
+    function jogar() {
+        div_mensagem.innerHTML = parseInt(aleatorio)
+    }
+    function jogar2() {
+        div_mensagem2.innerHTML = parseInt(aleatorio2)
+    }
+    function comparar() {
+        if (aleatorio > aleatorio2) {
+            div_mensagem3.innerHTML = `O jogador 1 venceu`            
+        } else if (aleatorio2 > aleatorio) {
+            div_mensagem3.innerHTML = `O jogador 2 venceu`            
+        } else {
+            div_mensagem3.innerHTML = `Empate!`            
+        }
+    }
+</script>

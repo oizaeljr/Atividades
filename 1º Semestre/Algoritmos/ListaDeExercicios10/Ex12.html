@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 12. Faça uma versão melhorada da questão anterior:
+
+    a) Tenha um botão "Verificar Média" que quando clicado, mostre abaixo da última avaliação a média de todas as
+    avaliações realizadas. Ex: "Média geral: 3.9"
+
+    b) Mostrar também o emoji de acordo com a média.
+
+    OBS: Essa média é a soma de todas as avaliações dividida pela quantidade de avaliações realizadas -->
+    <button onclick="avaliar()">Avaliar</button><br>
+    <div id="div_mensagem"></div><br>
+
+    <button onclick="verificar()">Verificar Média</button><br>
+    <div id="div_mensagem2"></div>
+</body>
+</html>
+<script>
+    var acumulo = 0
+    var cont = 0
+    function avaliar() {
+        var aleatorio = Math.random() * 5
+        cont++
+        acumulo += aleatorio
+        div_mensagem.innerHTML = `Nota recebida: ${aleatorio.toFixed(1)}` 
+        if (aleatorio <= 0.5) {
+            div_mensagem.innerHTML += `<br> Muito Triste 😭`
+        } else if (aleatorio <= 1.5) {
+            div_mensagem.innerHTML += `<br> Meio Triste 😓`
+        } else if (aleatorio <= 3.5) {
+            div_mensagem.innerHTML += `<br> Neutro 😶`
+        } else if (aleatorio <= 4.5) {
+            div_mensagem.innerHTML += `<br> Feliz 🙂`
+        } else {
+            div_mensagem.innerHTML += `<br> Muito Feliz 😁`
+        }
+    }
+
+    function verificar() {
+        var media = acumulo / cont
+        div_mensagem2.innerHTML = media.toFixed(1)
+        if (media <= 0.5) {
+            div_mensagem2.innerHTML += `<br> Muito Triste 😭`
+        } else if (media <= 1.5) {
+            div_mensagem2.innerHTML += `<br> Meio Triste 😓`
+        } else if (media <= 3.5) {
+            div_mensagem2.innerHTML += `<br> Neutro 😶`
+        } else if (media <= 4.5) {
+            div_mensagem2.innerHTML += `<br> Feliz 🙂`
+        } else {
+            div_mensagem2.innerHTML += `<br> Muito Feliz 😁`
+        }
+        
+    }
+</script>

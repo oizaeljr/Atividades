@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 9. Crie um programa o qual:
+
+    a) Tenha um botão "Gerar uma nota de aluno entre 3 e 10" que faz aparecer, abaixo dele, a nota gerada
+
+    b) Tenha um botão "Gerar uma frequência de aluno entre 50 e 100" que faz aparecer, abaixo dele, a frequência gerada
+
+    c) Deixe todos os valores com 1 casa decimal na tela
+
+    d) Ao clicar no botão “Ver Aprovação”, exiba na tela uma mensagem como a abaixo, de acordo com a situação do aluno:
+
+    "Com nota X e frequência Y, o aluno está Z!"
+
+    Onde X é a nota, Y a frequência e Z a situação do aluno (aprovado ou reprovado), sendo que para a aprovação, o aluno
+    deve possuir nota a partir de 6 e frequência a partir de 75%. -->
+    <button onclick="gerar()">Gerar uma nota de aluno entre 3 e 10</button><br>
+    <div id="div_mensagem"></div><br>
+
+    <button onclick="sortear()">Gerar uma frequência de aluno entre 50 e 100</button><br>
+    <div id="div_mensagem2"></div><br>
+
+    <button onclick="ver()">Ver Aprovação</button><br>
+    <div id="div_mensagem3"></div>
+</body>
+</html>
+<script>
+    var aleatorio = Math.random() * 7 + 3
+    var aleatorio2 = Math.random() * 50 + 50
+    function gerar() {
+        div_mensagem.innerHTML = aleatorio.toFixed(1)
+    }
+
+    function sortear() {
+        div_mensagem2.innerHTML = aleatorio2.toFixed(1)
+    }
+
+    function ver() {
+        var aprovacao = ''
+        if (aleatorio >= 6 && aleatorio2 >= 75) {
+            aprovacao = 'aprovado'
+        } else {
+            aprovacao = 'reprovado'
+        }
+        div_mensagem3.innerHTML = `Com nota ${aleatorio.toFixed(1)} e frequência ${aleatorio2.toFixed(1)}, o aluno está ${aprovacao}!`
+    }
+</script>

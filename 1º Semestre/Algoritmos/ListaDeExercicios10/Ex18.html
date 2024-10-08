@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 18. Crie um programa que simule um jogo de dados, o qual:
+
+    a) Tenha o seguinte texto:
+
+    Jogador 1: 0
+
+    Jogador 2: 0
+
+    Empate: 0
+
+    b) Ao clicar no botão “Jogar”, sorteie um valor de 1 a 6 para o Jogador 1 e outro valor para o Jogador 2 e some 1 no
+    placar do item a) de acordo com o resultado.
+
+    c) Após atualizar o placar, emita a mensagem "O jogador X está vencendo!", onde X é o jogador que está vencendo.
+    Caso o jogo esteja empatado, a mensagem será "O jogo está empatado!" -->
+    Jogador 1: <div id="div_jgr1">0</div><br>
+    Jogador 2: <div id="div_jgr2">0</div><br>
+    Empate: <div id="div_emp">0</div><br>
+
+    <div id="div_resultado"></div><br>
+
+    <button onclick="jogar()">Jogar</button><br><br>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+<script>
+    var jgr1 = 0
+    var jgr2 = 0
+    var emp = 0
+    function jogar() {
+        var aleatorio = parseInt(Math.random() * 5 + 1)
+        var aleatorio2 = parseInt(Math.random() * 5 + 1)
+        div_mensagem.innerHTML = `Player1: ${aleatorio} X Player2: ${aleatorio2}`
+
+        if (aleatorio > aleatorio2) {
+            jgr1++
+            div_jgr1.innerHTML = jgr1;
+        } else if (aleatorio2 > aleatorio) {
+            jgr2++
+            div_jgr2.innerHTML = jgr2;
+        } else {
+            emp++
+            div_emp.innerHTML = emp;
+        }
+        
+        if (jgr1 > jgr2 && jgr1 > emp) {
+            div_resultado.innerHTML = `O jogador 1 está vencendo!`
+        } else if (jgr2 > jgr1 && jgr2 > emp) {
+            div_resultado.innerHTML = `O jogador 2 está vencendo!`
+        } else {
+            div_resultado.innerHTML = `O jogo está empatado!`
+        }
+    }
+</script>

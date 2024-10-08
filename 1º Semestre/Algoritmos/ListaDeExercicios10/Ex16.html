@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 16. Crie um programa o qual:
+
+    a) Solicite ao usuário que digite seu nome e seu número inteiro da sorte. Esse número deve ser entre 1 e 10.
+
+    b) Ao clicar no botão "Sortear", valide se o usuário digitou entre 1 e 10. Caso não, exiba um alert orientando sobre
+    o erro. Caso contrário, faça um sorteio de números inteiros entre 1 e 10.
+
+    c) Caso o número sorteado em b) seja o número da sorte informado em a), exiba um texto em qualquer lugar da página
+    dizendo "Parabéns, YYYYYYY você foi sorteado(a) após X sorteios!", onde X é a quantidade de sorteios realizados e
+    YYYYYYY é o nome do usuário -->
+    Nome:
+    <input type="text" id="txt_nome"><br>
+
+    Número da sorte entre 1 e 10:
+    <input type="number" id="txt_numero"><br>
+
+    <button onclick="sortear()">Sortear</button><br>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+<script>
+    var cont = 0
+    function sortear() {
+        var numero = Number(txt_numero.value)
+        var nome = txt_nome.value
+  
+        if (numero < 1 || numero > 10) {
+            alert(`Digite um número entre 1 e 10`)
+            txt_numero.value = ''
+            txt_nome.value = ''
+        } else {
+            var aleatorio = parseInt(Math.random() * 9 + 1)
+            div_mensagem.innerHTML = aleatorio
+            if (aleatorio != numero) {
+                cont++
+            } else {
+                div_mensagem.innerHTML += `<br> Parabéns, ${nome} você foi sorteado(a) após ${cont} sorteios`
+                cont = 0
+            }
+        }
+    }
+</script>
