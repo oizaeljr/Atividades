@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 5. Tente fazer uma pequena simulação do famoso jogo "jo ken po" (pedra, papel e tesoura) em HTML/JS:
+
+    a) Ao clicar no botão "Jogar", deve aparecer abaixo dele ou a figura de uma pedra, de uma folha de papel ou de uma
+    tesoura (seja qual for a imagem, ela deve ter 200px de altura).
+
+    b) Abaixo das imagens, exiba quem venceu e exiba/atualize o placar de vitórias como abaixo:
+
+    O jogador 1 venceu!
+
+    Jogador 1: 1 vitória(s)
+
+    Jogador 2: 0 vitória(s) -->
+    <button onclick="jogar()">jogar</button>
+    <div style="display: flex; align-items: center;">
+        <img src="" id="img1" style="height: 200px;">
+        <span style="font-size: 20px;" id="versus"></span>
+        <img src="" id="img2" style="height: 200px;">
+    </div><br>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+<script>
+    var placarJgr1 = 0
+    var placarJgr2 = 0
+    function jogar() {
+        var aleatorio = Math.random() * 3
+        var aleatorio2 = Math.random() * 3
+        var sorteio1 = parseInt(aleatorio)
+        var sorteio2 = parseInt(aleatorio2)
+        var vencedor = ''
+        var mensagem = ''
+        versus.innerHTML = 'X'
+        if (sorteio1 == 0) {
+            img1.src = 'https://static.dicionariodesimbolos.com.br/upload/a0/a0/pedra-bruta-1_xl.jpeg'
+        } else if (sorteio1 == 1) {
+            img1.src = 'https://loja.mares.com.br/wp-content/uploads/2020/05/papel-vegetal-600x337.png'
+        } else {
+            img1.src = 'https://34495.cdn.simplo7.net/static/34495/sku/acessorios-para-costura-tesouras-e-alicates-tesoura-stainless-steel-scissors-6-5-ut66-17-5cm--p-1619810854179.png'
+        }
+
+        if (sorteio2 == 0) {
+            img2.src = 'https://static.dicionariodesimbolos.com.br/upload/a0/a0/pedra-bruta-1_xl.jpeg'
+        } else if (sorteio2 == 1) {
+            img2.src = 'https://loja.mares.com.br/wp-content/uploads/2020/05/papel-vegetal-600x337.png'
+        } else {
+            img2.src = 'https://34495.cdn.simplo7.net/static/34495/sku/acessorios-para-costura-tesouras-e-alicates-tesoura-stainless-steel-scissors-6-5-ut66-17-5cm--p-1619810854179.png'
+        }
+
+        if (sorteio1 == 0 && sorteio2 == 0) {
+            vencedor = 'Ninguém venceu!'
+        } else if (sorteio1 == 0 && sorteio2 == 1) {
+            placarJgr2++
+            vencedor = 'O jogador 2 venceu!'
+        } else if (sorteio1 == 0 && sorteio2 == 2) {
+            placarJgr1++
+            vencedor = 'O jogador 1 venceu!'
+        } else if (sorteio1 == 1 && sorteio2 == 1) {
+            vencedor = 'Ninguém venceu!'
+        } else if (sorteio1 == 1 && sorteio2 == 0) {
+            placarJgr1++
+            vencedor = 'O jogador 1 venceu!'
+        } else if (sorteio1 == 1 && sorteio2 == 2) {
+            placarJgr2++
+            vencedor = 'O jogador 2 venceu!'
+        } else if (sorteio1 == 2 && sorteio2 == 2) {
+            vencedor = 'Ninguém venceu!'
+        } else if (sorteio1 == 2 && sorteio2 == 0) {
+            placarJgr2++
+            vencedor = 'O jogador 2 venceu!'
+        } else if (sorteio1 == 2 && sorteio2 == 1) {
+            placarJgr1++
+            vencedor = 'O jogador 1 venceu!'
+        }
+
+        mensagem = `${vencedor} <br>
+        Jogador 1: ${placarJgr1} vitórias(s) <br>
+        Jogador 2: ${placarJgr2} vitórias(s)`
+        div_mensagem.innerHTML = mensagem;
+    }
+</script>

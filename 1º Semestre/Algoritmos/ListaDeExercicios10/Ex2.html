@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 2. Crie um programa o qual:
+
+    a) Ao clicar no botão "Sortear time", faz aparecer somente um dos escudos dos 4 times de futebol de maior torcida do
+    estado de São Paulo. Independente da imagem, todas devem ter 150px de altura. -->
+    <button onclick="Sortear()">Sortear time</button><br>
+    <img src="" style="height: 150px;" id="img">
+    <div id="div_mensagem"></div>
+</body>
+</html>
+<script>
+    function Sortear() {
+        var aleatorio = Math.random() * 4
+        var times = parseInt(aleatorio)
+        if (times == 1) {
+            div_mensagem.innerHTML = times
+            img.src = 'https://a.espncdn.com/combiner/i?img=/i/teamlogos/soccer/500/2026.png&scale=crop&cquality=40&location=origin&w=80&h=80'
+        } else if (times == 2) {
+            div_mensagem.innerHTML = times
+            img.src = 'https://a.espncdn.com/combiner/i?img=/i/teamlogos/soccer/500/2029.png&scale=crop&cquality=40&location=origin&w=80&h=80'
+        } else if (times == 3) {
+            div_mensagem.innerHTML = times
+            img.src = 'https://sismf.museudofutebol.org.br/anexos/imagem/478479/w:640/h:640/c:0'
+        } else {
+            div_mensagem.innerHTML = times
+            img.src = 'https://a.espncdn.com/combiner/i?img=/i/teamlogos/soccer/500/874.png&scale=crop&cquality=40&location=origin&w=80&h=80'
+        }
+    }
+</script>
