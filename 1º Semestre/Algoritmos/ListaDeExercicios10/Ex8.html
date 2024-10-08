@@ -17,6 +17,30 @@
     c) Deixe todos os valores com 2 casas decimais na tela
 
     d) Ao clicar no botão “Ver Situação", emitir um alerta com a situação desse aluno. -->
-</body>
+    <button onclick="sortear()">Gerar uma nota de aluno entre 0 e 10</button><br>
+    <div id="div_mensagem"></div><br>
 
+    <button onclick="gerar()">Gerar uma frequência de aluno entre 0 e 100</button><br>
+    <div id="div_mensagem2"></div><br>
+
+    <button onclick="ver()">Ver Situação</button><br>
+    <div id="div_mensagem3"></div>
+</body>
 </html>
+<script>
+    var aleatorio = Math.random() * 10
+    var nota = aleatorio.toFixed(2)
+    var aleatorio2 = Math.random() * 100
+    var freq = aleatorio2.toFixed(2)
+    function sortear() {  
+        div_mensagem.innerHTML = nota;
+    }
+
+    function gerar() {
+        div_mensagem2.innerHTML = freq;
+    }
+
+    function ver() {
+        alert(`${nota}\n${freq}`)
+    }
+</script>
