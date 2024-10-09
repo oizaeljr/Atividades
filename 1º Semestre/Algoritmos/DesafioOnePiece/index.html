@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- a) Solicite qual o episódio que o usuário deseja começar a assistir a série, aceitando somente números. Esse número
+    deve estar entre 1 e 1100.
+
+    b) Solicite a quantidade de tempo disponível que o usuário tem para assistir aos episódios, aceitando apenas
+    números.
+
+    c) Solicite a unidade de medida de tempo, selecionável dentre opções “horas” ou “minutos”.
+
+    d) Pergunte se o usuário deseja pular a abertura dos episódios, selecionando “sim” ou “não”.
+
+    e) Pergunte se o usuário deseja pular o encerramento dos episódios, também selecionando “sim” ou “não”. -->
+    Episódio que deseja começar assistindo:
+    <input type="number" id="txt_episodio"><br>
+
+    Quantidade de tempo disponível:
+    <input type="number" id="txt_tempo"><br>
+
+    Unidade de tempo em:
+    <select id="sel_medida">
+        <option value="0">Selecione uma opção</option>
+        <option value="1">horas</option>
+        <option value="2">minutos</option>
+    </select><br>
+
+    Pular abertura?
+    <select id="sel_abert">
+        <option value="0">Selecione uma opção</option>
+        <option value="1">sim</option>
+        <option value="2">não</option>
+    </select><br>
+
+    Pular encerramento?
+    <select id="sel_ence">
+        <option value="0">Selecione uma opção</option>
+        <option value="1">sim</option>
+        <option value="2">não</option>
+    </select><br>
+
+    <button onclick="assistir()">Assistir Episódios</button><br>
+
+    <div id="div_mensagem"></div>
+</body>
+</html>
+<script>
+    function assistir() {
+        var episodio = Number(txt_episodio.value)
+        var tempo = Number(txt_tempo.value)
+        var unidade = sel_medida.value
+        var abertura = sel_abert.value
+        var encerramento = sel_ence.value
+        var mensagem = ''
+        var horasEmMin = 0
+        var horasRestante = 0
+        
+        if (unidade == 1) {
+            horasEmMin = tempo * 60 // transforma a hora em minutos
+        } else if (unidade == 2) {
+            horasEmMin = tempo 
+        }
+
+        if (episodio < 1 || episodio > 1100) { // valida as inserções 
+             mensagem = `O número do episódio é inválido`
+        } else {
+            mensagem = `Episódio: ${episodio}` // exibi o número do episódio
+            if (abertura == 2 && encerramento == 2) {
+                
+            }
+            for(var contador2 = 1; contador2 <= horasEmMin; contador2++){
+                for(var contador = 1; contador <= 24; contador++){
+                    if (abertura == 2) { // não quer pular abertura
+                        if (contador == 1 || contador == 2) {
+                            mensagem += `<br> Minuto ${contador}: Assistindo Abertura`
+                        } else if(contador > 2 && contador <= 22){
+                            mensagem += `<br> Minuto ${contador}: Assistindo o Episódio`
+                        } else if(contador <= 24){
+                            if (encerramento == 2) { // não quer pular encerrameno
+                                mensagem += `<br> Minuto ${contador}: Assistindo Encerramento`
+                            }
+                        } else {
+                            episodio++
+                            horasEmMin -= 24
+                            mensagem = `<br><br> Episódio: ${episodio}`
+                        }
+                    } else if (abertura == 1) { // quer pular abertura
+                        if (contador >= 1 && contador <= 20) {
+                                mensagem += `<br> Minuto ${contador}: Assistindo o Episódio`
+                        } else if (contador <= 22) {
+                            if (encerramento == 2) { // não quer pular encerramento
+                                mensagem += `<br> Minuto ${contador}: Assistindo Encerramento`
+                            }
+                        } else {
+                            episodio++
+                            horasEmMin -= 24
+                            mensagem = `<br><br> Episódio: ${episodio}`
+                        }
+                    } 
+                }
+            }
+            
+        } 
+        div_mensagem.innerHTML = mensagem;
+    }
+</script>
+<!-- <script>
+    function assistir() {
+        var episodio = Number(txt_episodio.value)
+        var tempo = Number(txt_tempo.value)
+        var unidade = sel_medida.value
+        var abertura = sel_abert.value
+        var encerramento = sel_ence.value
+        var mensagem = ''
+        var horasEmMin = 0
+        var horasRestante = 0
+
+        if (unidade == 1) {
+            horasEmMin = tempo * 60
+        } else if (unidade == 2) {
+            horasEmMin = tempo 
+        }
+
+        if (episodio < 1 || episodio > 1100) {
+             mensagem = `O número do episódio é inválido`
+        } else if (horasEmMin >= 1 && horasEmMin <= 24) {
+            horasRestante = horasEmMin - 24
+            mensagem = `Episódio: ${episodio}`
+            for(var contador = 1; contador <= horasEmMin; contador++){
+                if (abertura == 2) {
+                    if (contador == 1 || contador == 2) {
+                        mensagem += `<br> Minuto ${contador}: Assistindo Abertura`
+                    } else if(contador > 2 && contador <= 22){
+                        mensagem += `<br> Minuto ${contador}: Assistindo o Episódio`
+                    } else if(contador <= 24){
+                        if (encerramento == 2) {
+                            mensagem += `<br> Minuto ${contador}: Assistindo Encerramento`
+                        }
+                    } 
+                } else if (abertura == 1) {
+                    if (contador >= 1 && contador <= 20) {
+                            mensagem += `<br> Minuto ${contador}: Assistindo o Episódio`
+                    } else if (contador <= 22) {
+                        if (encerramento == 2) {
+                            mensagem += `<br> Minuto ${contador}: Assistindo Encerramento`
+                        }
+                    }
+                } 
+            }
+        } 
+        div_mensagem.innerHTML = mensagem;
+    }
+</script> -->
+
