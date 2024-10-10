@@ -50,6 +50,7 @@
 
     <div id="div_mensagem"></div>
 </body>
+
 </html>
 <script>
     function assistir() {
@@ -60,54 +61,90 @@
         var encerramento = sel_ence.value
         var mensagem = ''
         var horasEmMin = 0
-        var horasRestante = 0
-        
+        var tempoDisponivel = 0
+        var assistido = 0
+        var duracao = 0
+        var totalAssistido = 0
+
         if (unidade == 1) {
             horasEmMin = tempo * 60 // transforma a hora em minutos
+            auxiliar = horasEmMin
         } else if (unidade == 2) {
-            horasEmMin = tempo 
+            horasEmMin = tempo
+            auxiliar = horasEmMin
         }
 
         if (episodio < 1 || episodio > 1100) { // valida as inserções 
-             mensagem = `O número do episódio é inválido`
+            mensagem = `O número do episódio é inválido`
         } else {
-            mensagem = `Episódio: ${episodio}` // exibi o número do episódio
-            if (abertura == 2 && encerramento == 2) {
-                
+            if (abertura == 1 && encerramento == 1) {
+                duracao = 20
+            } else if ((abertura == 1 && encerramento == 2) || (abertura == 2 && encerramento == 1)) {
+                duracao = 22
+            } else if (abertura == 2 && encerramento == 2) {
+                duracao = 24
             }
-            for(var contador2 = 1; contador2 <= horasEmMin; contador2++){
-                for(var contador = 1; contador <= 24; contador++){
+            if (horasEmMin > duracao) {
+                if (horasEmMin % duracao == 0) {
+                    tempoDisponivel = parseInt(horasEmMin / duracao)
+                } else {
+                    tempoDisponivel = parseInt((horasEmMin / duracao) + 1)
+                }
+            } else {
+                tempoDisponivel = 1
+            }
+            for (var contador2 = 1; contador2 <= tempoDisponivel; contador2++) {
+                if (contador2 > 1) {
+                    episodio++
+                }
+                for (var contador = 1; contador <= duracao; contador++) {
                     if (abertura == 2) { // não quer pular abertura
-                        if (contador == 1 || contador == 2) {
+                        if (contador == 1 && horasEmMin >= 1) {
+                            horasEmMin--
+                            assistido++
+                            mensagem += `<br><br>Episódio ${episodio} <br> Minuto ${contador}: Assistindo Abertura`
+                        } else if (contador == 2 && horasEmMin >= 1) {
+                            horasEmMin--
+                            assistido++
                             mensagem += `<br> Minuto ${contador}: Assistindo Abertura`
-                        } else if(contador > 2 && contador <= 22){
+                        }
+                        else if (contador > 2 && contador <= 22 && horasEmMin >= 1) {
+                            horasEmMin--
+                            assistido++
                             mensagem += `<br> Minuto ${contador}: Assistindo o Episódio`
-                        } else if(contador <= 24){
+                        } else if (contador <= 24 && horasEmMin >= 1) {
                             if (encerramento == 2) { // não quer pular encerrameno
+                                horasEmMin--
+                                assistido++
                                 mensagem += `<br> Minuto ${contador}: Assistindo Encerramento`
                             }
-                        } else {
-                            episodio++
-                            horasEmMin -= 24
-                            mensagem = `<br><br> Episódio: ${episodio}`
                         }
                     } else if (abertura == 1) { // quer pular abertura
-                        if (contador >= 1 && contador <= 20) {
-                                mensagem += `<br> Minuto ${contador}: Assistindo o Episódio`
-                        } else if (contador <= 22) {
+                        if (contador == 1 && horasEmMin >= 1) {
+                            horasEmMin--
+                            assistido++
+                            mensagem += `<br><br> Episódio ${episodio} <br> Minuto ${contador}: Assistindo o Episódio`
+                        } else if (contador <= 20 && horasEmMin >= 1) {
+                            horasEmMin--
+                            assistido++
+                            mensagem += `<br> Minuto ${contador}: Assistindo o Episódio`
+                        }
+                        else if (contador <= 22 && horasEmMin >= 1) {
+                            horasEmMin--
+                            assistido++
                             if (encerramento == 2) { // não quer pular encerramento
                                 mensagem += `<br> Minuto ${contador}: Assistindo Encerramento`
                             }
-                        } else {
-                            episodio++
-                            horasEmMin -= 24
-                            mensagem = `<br><br> Episódio: ${episodio}`
                         }
-                    } 
+                    }
+                }
+                if (horasEmMin == 0) {
+                    totalAssistido = assistido / duracao
+                    mensagem += `<br><br> Fim dos episódios <br> Foram assistidos: ${totalAssistido} episódios`
                 }
             }
-            
-        } 
+
+        }
         div_mensagem.innerHTML = mensagem;
     }
 </script>
@@ -158,4 +195,3 @@
         div_mensagem.innerHTML = mensagem;
     }
 </script> -->
-
