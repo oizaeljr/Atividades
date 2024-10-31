@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 2. Crie um programa o qual:
+
+    a) Tenha um campo "Destino de viagem" e um botão "Adicionar";
+
+    b) Ao clicar no botão, esse destino deve ser adicionado a uma lista (que não aparece para o usuário).
+
+    Obs: Não existe problema em serem registrados valores repetidos.
+
+    c) Devem haver os botões:
+
+    "Primeira viagem" - Ao ser clicado, aparece abaixo o primeiro local cadastrado ou "Ainda não viajou" - caso nenhuma
+    (zero viagens) viagem tenha sido registrada;
+
+    "Terceira viagem" - Ao ser clicado, aparece abaixo o terceiro local cadastrado ou "Ainda fez a terceira viagem",
+    caso não tenha feito, ao menos, três viagens;
+
+    "Última viagem" - Ao ser clicado, aparece abaixo o último local cadastrado ou "Ainda não viajou", caso nenhuma (zero
+    viagens) viagem tenha sido registrada. -->
+    Destino de viagem:
+    <input type="text" id="txt_destino">
+
+    <button onclick="adicionar()">Adicionar</button><br>
+
+    <button onclick="primeira()">Primeira Viagem</button>
+    <button onclick="terceira()">Terceira Viagem</button>
+    <button onclick="ultima()">Última Viagem</button><br>
+
+    <div id="div_mensagem"></div>    
+</body>
+</html>
+<script>
+    var destinos = []
+    function adicionar() {
+        var destino = txt_destino.value
+
+        destinos.push(destino);
+    }
+
+    function primeira() {
+        if (destinos.length == 0) {
+            div_mensagem.innerHTML = `Ainda não viajou`
+        } else {
+            div_mensagem.innerHTML = `${destinos[0]}`
+        }
+    }
+
+    function terceira() {
+        if (destinos.length < 2) {
+            div_mensagem.innerHTML = `Ainda não fez a terceira viagem`
+        } else {
+            div_mensagem.innerHTML = `${destinos[2]}`
+        }
+    }
+
+    function ultima() {
+        if (destinos.length == 0) {
+            div_mensagem.innerHTML = `Ainda não viajou`
+        } else {
+            div_mensagem.innerHTML = `${destinos[destinos.length-1]}`
+        }
+    }
+</script>
