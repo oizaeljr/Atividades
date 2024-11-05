@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 9. Crie um programa o qual:
+
+    a) Pergunte ao usuário o nome de cada projeto que já criou na vida. Ele digita e clica em "Registrar projeto". Na
+    medida em que vai cadastrando, verifique quantos projetos já foram cadastrados e exiba o seguinte texto abaixo:
+
+    Você já fez X projetos. Por isso você é um profissional Z
+
+    X é a quantidade de projetos e Z é seu nível de experiência, segundo estas regras:
+
+    0 a 4: Júnior
+
+    5 a 12: Pleno
+
+    13 ou mais: Sênior
+
+    b) Tenha um botão “Mostrar Projetos” que quando clicado mostra os projetos cadastrados, um abaixo do outro, em ordem
+    inversa ao que foi cadastrado. -->
+    Projetos:
+    <input type="text" id="txt_projeto"><br>
+    <button onclick="registrar()">Registrar projeto</button><br>
+    <button onclick="mostrar()">Mostrar projetos</button><br>
+    <div id="div_mensagem"></div>
+
+</body>
+
+</html>
+<script>
+    var projetos = []
+    function registrar() {
+        var projeto = txt_projeto.value
+        projetos.push(projeto)
+        
+        var quantidade = projetos.length
+        var exp;
+        if (quantidade <= 4) {
+            var exp = 'Júnior'
+        } else if (quantidade <= 12) {
+            var exp = 'Pleno'
+        } else {
+            var exp = 'Sênior'
+        }
+        div_mensagem.innerHTML = `Você já fez ${quantidade} projetos. Por isso você é um profissional ${exp}<br>`
+    }
+
+    function mostrar() {
+        for(var contador = projetos.length-1; contador >= 0; contador--){
+            div_mensagem.innerHTML += `${projetos[contador]} <br>`
+        }
+    }
+</script>

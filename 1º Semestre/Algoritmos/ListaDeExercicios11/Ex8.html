@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 8 (ENTREGAR). Crie um programa o qual:  
+
+a) O usuário cadastre nomes de alunos;  
+
+b) Porém, na medida que vai cadastrando, aparecem um abaixo do outro na ordem inversa em que foram cadastrados 
+(ou seja, o último sempre fica no topo, o penúltimo em abaixo dele e assim por diante).   -->
+
+Nomes:
+<input type="text" id="txt_nome"><br>
+<button onclick="cadastrar()">Cadastrar</button>
+<div id="div_mensagem"></div>
+</body>
+
+</html>
+<script>
+    var nomes = []
+    function cadastrar() {
+        var nome = txt_nome.value
+        nomes.push(nome)
+        div_mensagem.innerHTML = ''
+        for(var contador = nomes.length-1; contador >= 0; contador--){
+            div_mensagem.innerHTML += `${nomes[contador]} <br>`
+        }
+    }
+</script>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 12 (ENTREGAR). Crie um programa o qual:
+
+    a) Pergunte ao usuário o nome de um de seus filhos;
+
+    b) Ao clicar em "Cadastrar", o nome do filho fica cadastrado num lugar que o usuário não vê, porém não permita o
+    cadastro de nomes repetidos.
+
+    b.1) Em caso de tentativa de nome repetido, exiba um alert com a frase "Não pode mais de 1 filho com o mesmo nome!"
+
+    c) Ao clicar em "Atualizar Família", deve aparecer um texto como este abaixo:
+
+    Você tem X filhos
+
+    Seu custo mensal será aproximadamente R$Y se colocá-los em escola particular ou R$Z se eles estudarem em escola
+    pública
+
+    Em que X é a quantidade de filhos cadastrados.
+
+    Y é o resultado do seguinte cálculo: filhos x 3000
+
+    Z é o resultado do seguinte cálculo: filhos x 1500 -->
+    Nome do filho:
+    <input type="text" id="txt_nome"><br>
+    <button onclick="cadastrar()">Cadastrar</button><br>
+    <button onclick="atualizar()">Atualizar Família</button><br>
+    <div id="div_mensagem"></div>
+</body>
+
+</html>
+<script>
+    var filhos = []
+    function cadastrar() {
+        var nome = txt_nome.value
+        var verificaRepetidos = filhos.includes(nome)
+
+        if (verificaRepetidos) {
+            alert(`Não pode mais de 1 filho com o mesmo nome!`)
+        } else {
+            filhos.push(nome)
+        }
+    }
+    function atualizar() {
+        var quantidade = filhos.length 
+        var mensal = quantidade * 3000
+        var escola = quantidade * 1500
+        div_mensagem.innerHTML = `Você tem ${quantidade} filhos <br>
+        Seu custo mensal será aproximadamente R$${mensal} se colocá-los em escola particular ou R${escola} se eles estudarem em escola
+    pública`
+    }
+</script>
