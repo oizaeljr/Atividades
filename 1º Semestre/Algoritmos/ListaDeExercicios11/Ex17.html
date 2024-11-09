@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 17. O autoposto de abastecimento Anil Osag faz o controle de estoque de produto sendo:
+
+    1. Cada compra (entrada) de produto é identificada com o nome do produto e a quantidade comprada
+
+    2. Cada venda (saída) de produto é identificada com o nome do produto e a quantidade vendida.
+
+    3. Quando um produto comprado não existe nos controles é gerado uma nova “ficha” para controlar o estoque desse
+    produto
+
+    4. Naturalmente, não é possível vender mais do que existe em estoque e nem vender um produto que não temos.
+
+    Faça um programa para a família Osag controlar e exibir o saldo em estoque dos produtos do seu auto posto Anil. OBS:
+    não é necessário controlar as movimentações de estoque e sim somente as saídas -->
+    Compra <br>
+    Nome do produto:
+    <input type="text" id="txt_nome"><br>
+    Quantidade do produto:
+    <input type="text" id="txt_quantidade"><br>
+    <button onclick="cadastrar()">Cadastrar produto</button><br>
+    <div id="div_mensagem"></div><br><br>
+
+    Venda <br>
+    Nome do produto:
+    <input type="text" id="txt_nome2"><br>
+    Quantidade do produto:
+    <input type="text" id="txt_quantidade2"><br>
+    <button onclick="vender()">Vender</button><br>
+    <div id="div_mensagem2"></div><br>
+
+</body>
+
+</html>
+<script>
+    var produtos = []
+    var quant = []
+
+    function cadastrar() {
+        var nome = txt_nome.value
+        var quantidade = Number(txt_quantidade.value)
+        var index = produtos.indexOf(nome)
+        if (produtos.includes(nome)) {
+            quant[index] += quantidade
+            div_mensagem.innerHTML = `Cadastrado com sucesso <br> 
+            Produto: ${nome} | Quantidade: ${quantidade} <br> Quantidade atual: ${quant[index]}`
+        } else {
+            produtos.push(nome)
+            quant.push(quantidade)
+            div_mensagem.innerHTML = `Cadastrado com sucesso <br> 
+            Produto: ${nome} | Quantidade: ${quantidade} <br> Quantidade atual: ${quantidade}`
+        }
+    }
+    function vender() {
+        var nome2 = txt_nome2.value
+        var quantidade2 = Number(txt_quantidade2.value)
+        var index2 = produtos.indexOf(nome2)
+
+        if (produtos.includes(nome2) == false) {
+            div_mensagem2.innerHTML = `Produto ${nome2} não está na lista`
+        } else if (produtos.includes(nome2)) {
+            if (quant[index2] <= 0) {
+                div_mensagem2.innerHTML = `Temos o produto ${nome2} na lista, mas não temos em estoque, precisa comprar`
+            } else {
+                if (quantidade2 > quant[index2]) {
+                    div_mensagem2.innerHTML = `Produto vendido: ${nome2} | Quantidade vendida: ${quant[index2]} | Quantidade atual: ${quant[index2] = 0}`
+                } else {
+                    quant[index2] -= quantidade2
+                    div_mensagem2.innerHTML = `Produto vendido: ${nome2} | Quantidade vendida: ${quantidade2} | Quantidade atual: ${quant[index2]}`
+                }
+            }
+        }
+
+
+
+    }
+</script>

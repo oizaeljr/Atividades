@@ -1,37 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-
 <body>
-    <!-- 15. Crie um pequeno sistema de loja eletrônica o qual:
+    <!-- 16. Refaça a 15ª questão de tal forma que, ao final do relatório, o programa exiba:  
 
-    a) Tenha um campo "Nome do produto" e outro "Preço de compra";
+a) O nome do produto mais caro; 
 
-    b) Tenha um botão "Cadastrar". Ao clicar nele, o nome e preço ficam cadastrados em algum lugar, por enquanto
-    invisível ao usuário
+b) O nome do produto mais barato; 
 
-    c) Tenha um botão "Relatório de estoque". Ao clicar nele, deve aparecer uma listagem dos produtos cadastrados com
-    seu valor para venda, como no exemplo a seguir:
+c) A soma dos preços de compra dos produtos; 
 
-    Total de produtos: 2
+d) A média de preço de venda dos produtos.  -->
 
-    Produto 1: Leite de arroz
-
-    Preço de compra: R$1.50. Vender por R$1,87
-
-    Produto 2: Caixa de chocolates
-
-    Preço de compra: R$9.00. Vender por R$11,25
-
-    O preço de venda é sempre o valor da compra mais 25%.
-
-    #FicaDica: De repente você pode precisar de 2 vetores aqui ;) -->
-    Nome do produto:
+Nome do produto:
     <input type="text" id="txt_nome"><br>
     Preço da compra:
     <input type="text" id="txt_preco"><br>
@@ -46,22 +31,39 @@
     var precos = []
     var valorVenda = []
     var quant = 0
+    var soma = 0
     function cadastrar() {
         var nome = txt_nome.value
         var preco = Number(txt_preco.value)
         var valor = preco * 1.25
         quant++
+        soma+= preco
         nomes.push(nome)
         precos.push(preco)
         valorVenda.push(valor)
     }
     function relatorio() {
+        var maisCaro = precos[0]
+        var maisBarato = precos[0]
+        var media = soma / quant
         div_mensagem.innerHTML = `Total de produtos: ${quant}<br><br>`
         for (var contador = 0; contador < nomes.length; contador++) {
+            if (precos[contador] >= maisCaro) {
+                maisCaro = precos[contador]
+            } else {
+                if (precos[contador] <= maisBarato) {
+                    maisBarato = precos[contador]
+                }
+            }
+            
             div_mensagem.innerHTML += `
             Produto ${contador+1}: ${nomes[contador]} <br>
             Preço de compra: R$${precos[contador]}. Vender por R$${valorVenda[contador]}<br><br>`
         }
+        div_mensagem.innerHTML += `Produto mais caro: ${maisCaro}<br>
+        Produto mais barato: ${maisBarato}<br>
+        A soma dos preços de compra dos produtos: ${soma}<br>
+        A média de preço de venda dos produtos: ${media}`
         
     }
 </script>

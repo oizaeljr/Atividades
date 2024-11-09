@@ -8,26 +8,60 @@
 </head>
 
 <body>
-    <!-- 14. Crie um programa o qual:
 
-    a) Tenha um campo "Digite um número qualquer";
+    Digite um número qualquer: <input type="text" id="inp_numeroQualquer">
+    <button onclick="historico()">Histórico</button>
+    <div id="div_mensagem"></div>
+    <!-- a) Tenha um campo "Digite um número qualquer";  
 
-    b) Tenha um botão "Analisar histórico" que ao ser clicado, o número é cadastrado em algum lugar e, em seguida, deve
-    aparecer um histórico dos números cadastrados, bem como o maior e o menor, como no exemplo a seguir:
+b) Tenha um botão "Analisar histórico" que ao ser clicado, o número é cadastrado em algum lugar e, em seguida, deve aparecer um histórico dos números cadastrados, bem como o maior e o menor, como no exemplo a seguir:  
 
-    1º Número: 15
+   1º Número: 15  
 
-    2º Número: 22
+   2º Número: 22  
 
-    3º Número: 19
+   3º Número: 19  
 
-    4º Número: 5
+   4º Número: 5  
 
-    Maior: 22
+   Maior: 22  
 
-    Menor: 5 -->
-
-
+   Menor: 5   -->
 </body>
 
 </html>
+<script>
+
+    var lista_numeros = [];
+    var maiorNumero = 0;
+    var menorNumero = 0;
+
+    function historico() {
+
+        var numero = Number(inp_numeroQualquer.value);
+        lista_numeros.push(numero);
+        var mensagem = "";
+
+        for (var contador = 0; contador < lista_numeros.length; contador++) {
+
+            var numeroAtual = lista_numeros[contador];
+            var numeroAnterior = lista_numeros[contador - 1];
+
+            mensagem += `${contador + 1}º Número: ${numeroAtual} <br>`;
+
+            if (lista_numeros.length > 1) {
+                if (maiorNumero < numeroAtual) {
+                    maiorNumero = numeroAtual;
+                }
+                if (menorNumero > numeroAtual) {
+                    menorNumero = numeroAtual;
+                }
+            } else {
+                maiorNumero = numeroAtual;
+                menorNumero = numeroAtual;
+            }
+        }
+        div_mensagem.innerHTML = `${mensagem} <br> Maior: ${maiorNumero} <br> Menor: ${menorNumero}`;
+    }
+
+</script>
