@@ -1,51 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-
 <body>
-    <!-- 13. Crie um programa o qual:
+    Indique o resultado: 
+    <select id="select_resultado">
+        <!-- <option value="#">Selecione uma opção</option> -->
+        <option value="Ganhou">Vitória</option>
+        <option value="Empatou">Empate</option>
+        <option value="Perdeu">Derrota</option>
+    </select>
 
-    a) Cadastre a campanha de um time de futebol num campeonato da seguinte forma:
+    <button onclick="registrar()">Registrar jogo</button> <br><br>
+    
+    Pesquisa: <input oninput="pesquisar()" type="text" id="input_pesquisa">
+    
+    <div id="div_mensagem"></div>
 
-    a.1) Tenha um 'combo' (select/option) identificado com o texto "Indique o resultado" com os itens:
-
-    Vitória
-
-    Empate
-
-    Derrota
-
-    b) Ao clicar num botão "Registrar jogo", o resultado escolhido em a) é registrado em um local invisível ao usuário e
-    um texto abaixo é exibido (ou atualizado). O texto é como este:
-
-    O time teve: V vitórias, E empates, D derrotas
-
-    Pontuação total: X pontos
-
-    Aproveitamento: Y%
-
-    Em que X é calculado assim: Cada vitória (V) vale 3 pontos. Cada empate (E) vale 1 ponto. Cada derrota (D) vale 0
-    pontos.
-
-    O Y é o total de pontos conquistados (X) dividido pelo total de pontos possíveis (ou seja, considerando que tivesse
-    vencido todos os jogos) vezes 100.
-
-    c) Deve haver um campo "Indique qual jogo deseja saber o resultado". Na medida em que vai digitando, aparece um
-    texto, abaixo do texto de b) como este:
-
-    No XXº jogo, o time Ganhou (ou "Perdeu" ou "Empatou")
-
-    ou um texto como este, caso o valor seja de um jogo que não foi cadastrado:
-
-    Não foi cadastrado um XXº jogo
-
-    Obs: Neste item considere que o usuário ache que 1 indica o 1º jogo. Ou seja, o usuário não imagina que o 1º é o
-    jogo "0" na verdade. -->
 </body>
-
 </html>
+
+<script>
+    var lista_resultados = [];
+    
+    function registrar() {
+        var pontos = 0;
+        var qtd_vitorias = 0;
+        var qtd_empates = 0;
+        var qtd_derrotas = 0;
+
+        var resultado = select_resultado.value;
+
+        // if (resultado == "#") {
+        //     alert("Selecione uma opção válida");
+        // } else {  ...resto do código aqui...  }
+
+        lista_resultados.push(resultado); // "Vitória", "Empate", "Derrota"
+
+        var tamanho_lista = lista_resultados.length;
+        var total_pontos = tamanho_lista * 3;
+
+        for (var index = 0; index < tamanho_lista; index++) {
+            var resultado_atual = lista_resultados[index];
+
+            if (resultado_atual == "Ganhou") {
+                qtd_vitorias++;
+                pontos += 3;
+            } else if (resultado_atual == "Empatou") {
+                qtd_empates++;
+                pontos++;
+            } else {
+                qtd_derrotas++;
+            }
+        }
+
+        var aproveitamento = pontos / total_pontos * 100;
+        
+        div_mensagem.innerHTML = `
+            O time teve: ${qtd_vitorias} vitórias, ${qtd_empates} empates, ${qtd_derrotas} derrotas  <br>
+            Pontuação total: ${pontos} pontos  <br>
+            Aproveitamento: ${aproveitamento}%  <br>
+        `;
+    }
+
+    function pesquisar () {
+        var pesquisa = Number(input_pesquisa.value);
+
+        if (pesquisa <= lista_resultados.length && pesquisa > 0) {
+        //    No XXº jogo, o time Ganhou (ou "Perdeu" ou "Empatou")  
+            var resultado = lista_resultados[pesquisa - 1]; // 5º > 4º
+
+            div_mensagem.innerHTML = `No ${pesquisa}º jogo, o time ${resultado} `;
+        } else {
+            div_mensagem.innerHTML = `Não foi cadastrado um ${pesquisa}º jogo`;
+        }
+    }
+</script>
