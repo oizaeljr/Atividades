@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    Nome: <input type="text" id="txt_nome"><br>
+    Código: <input type="text" id="txt_codigo"><br>
+    Quantidade: <input type="number" id="txt_quantidade"><br>
+    <button onclick="cadastrar()">Cadastrar Produto</button>
+    <button onclick="repor()">Repor Estoque</button>
+    <button onclick="vender()">Vender Produto</button>
+    <button onclick="relatorio()">Exibir Relatório</button><br>
+    <div id="div_mensagem"></div>
+</body>
+
+</html>
+<script>
+    var nomes = []
+    var codigos = []
+    var quantidades = []
+    var alertas = []
+
+    var categoria = 0
+    var quantidadeProdutos = 0
+
+    function cadastrar() {
+        var nome = txt_nome.value
+        var codigo = txt_codigo.value
+        var quantidade = Number(txt_quantidade.value)
+        var verificaCodigo = codigos.includes(codigo)
+        var verificaNome = nomes.includes(nome)
+        var mensagem = ''
+
+        if (nome != '' && codigo != '' && quantidade >= 10) {
+            if (verificaCodigo == false) {
+                mensagem = `Produto: ${nome} registrado com sucesso`
+                nomes.push(nome)
+                codigos.push(codigo)
+                quantidades.push(quantidade)
+                alertas.push('OK')
+                categoria++
+                quantidadeProdutos += quantidade
+            } else {
+                mensagem = `Código de produto já existente`
+            }
+        } else {
+            mensagem = `Preencha todos os campos para registrar um novo produto`
+        }
+        div_mensagem.innerHTML = mensagem;
+    }
+
+    function repor() {
+        var nome = txt_nome.value
+        var codigo = txt_codigo.value
+        var quantidade = Number(txt_quantidade.value)
+        var verificaCodigo = codigos.includes(codigo)
+        var verificaNome = nomes.includes(nome)
+        var mensagem = ''
+        if (verificaCodigo && verificaNome) {
+            if (quantidade > 0) {
+                for (var contador = 0; contador < quantidades.length; contador++) {
+                    if (codigos[contador] == codigo) {
+                        quantidades[contador] += quantidade
+                        quantidadeProdutos += quantidade
+                        if (quantidades[contador] >= 10) {
+                            alertas[contador] = 'OK'
+                        } else {
+                            alertas[contador] = 'Precisa repor'
+                        }
+                    }
+                }
+                mensagem = `${quantidade}x do ${nome} foi reposto com sucesso`
+            } else {
+                mensagem = `Quantidade inválida`
+            }
+        } else {
+            mensagem = `Produto não identificado`
+        }
+        div_mensagem.innerHTML = mensagem;
+    }
+
+    function vender() {
+        var nome = txt_nome.value
+        var codigo = txt_codigo.value
+        var quantidade = Number(txt_quantidade.value)
+        var verificaCodigo = codigos.includes(codigo)
+        var verificaNome = nomes.includes(nome)
+        var mensagem = ''
+        if (verificaCodigo && verificaNome) {
+            for (var contador = 0; contador < quantidades.length; contador++) {
+                if (codigos[contador] == codigo) {
+                    if (quantidade <= quantidades[contador]) {
+                        quantidades[contador] -= quantidade
+                        quantidadeProdutos -= quantidade
+                        mensagem = `${quantidade}x do ${nome} foi vendido com sucesso <br>`
+                        if (quantidades[contador] < 10) {
+                            alertas[contador] = ('Precisa repor')
+                        } else {
+                            alertas[contador] = ('OK')
+                        }
+                        mensagem += `<br> Código: ${codigo} | Produto: ${nome} | Quantidade em Estoque: ${quantidades[contador]} (${alertas[contador]})`
+                    } else {
+                        mensagem = `Quantidade inválida`
+                    }
+                }
+            }
+        } else {
+            mensagem = `Produto não identificado`
+        }
+        div_mensagem.innerHTML = mensagem;
+    }
+
+    function relatorio() {
+        mensagem = ''
+        for (var contador = 0; contador < categoria; contador++) {
+            mensagem += `Categoria ${contador + 1} - 
+            Código: ${codigos[contador]} | 
+            Produto: ${nomes[contador]} | 
+            Quantidade em Estoque: ${quantidades[contador]} (${alertas[contador]}) <br><br>`
+        }
+        mensagem += `Seu estoque tem ${quantidadeProdutos} produtos registrados, sendo ${categoria} categorias diferentes`
+        div_mensagem.innerHTML = mensagem;
+    }
+</script>
